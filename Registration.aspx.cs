@@ -23,7 +23,7 @@ public partial class Registraction : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        SqlCommand cmd = new SqlCommand("INSERT INTO [users] ([name], [email], [password]) VALUES (@name, @email, @password)", c);
+        SqlCommand cmd = new SqlCommand("INSERT INTO [admin] ([name], [email], [password]) VALUES (@name, @email, @password)", c);
         cmd.Parameters.AddWithValue("@name",TextBox1.Text.Trim());
         cmd.Parameters.AddWithValue("@email",TextBox2.Text.Trim());
         cmd.Parameters.AddWithValue("@password",TextBox3.Text.Trim());

@@ -13,12 +13,15 @@ public partial class login : System.Web.UI.Page
     SqlConnection c = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnectionString1"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (Session!=null)
+        {
+            Response.Redirect("~/admin.aspx");
+        }
     }
     
     protected void Button1_Click(object sender, EventArgs e)
-    {
-        SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [users] WHERE [email] = @nm AND [password] = @pm", c);
+    {   
+        SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [admin] WHERE [email] = @nm AND [password] = @pm", c);
         cmd.Parameters.AddWithValue("@nm", TextBox1.Text.Trim());
         cmd.Parameters.AddWithValue("@pm", TextBox2.Text.Trim());
         c.Open();
